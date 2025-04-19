@@ -39,7 +39,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md shadow-md">
-      <div className="container  flex h-16 border-none bg-header items-center justify-between text-white">
+      <div className=" container  flex h-16 border-none bg-header items-center justify-between text-white">
         <div className="flex items-center !border-none bg-header gap-2 md:gap-8">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
@@ -77,7 +77,7 @@ export default function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Logo/>
+          <Logo />
 
           {/* <Link href="/" className="flex items-center !border-none space-x-2">
             <span className="font-bold text-xl text-white !border-none bg-header hidden md:inline-block">Job Portal</span>
@@ -96,47 +96,76 @@ export default function Header() {
         {user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
-                  <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+              <Button
+                variant="ghost"
+                className="!border-none relative h-9 w-9 rounded-full hover:bg-primary/10 transition"
+              >
+                <Avatar className="!border-none h-9 w-9">
+                  <AvatarFallback className="!border-none bg-primary text-white font-semibold">
+                    {getInitials(user.name)}
+                  </AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <div className="flex items-center justify-start gap-2 p-2">
-                <div className="flex flex-col space-y-1 leading-none">
-                  <p className="font-medium">{user.name}</p>
-                  <p className="text-sm text-muted-foreground">{user.email}</p>
+
+            <DropdownMenuContent
+              align="end"
+              className="w-56 rounded-xl border border-gray-200 shadow-lg p-2 bg-white"
+            >
+              <div className="flex items-center gap-3 px-2 py-2">
+                <Avatar className="h-9 w-9">
+                  <AvatarFallback className="bg-muted text-primary font-medium">
+                    {getInitials(user.name)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col text-sm">
+                  <span className="font-semibold text-gray-800">{user.name}</span>
+                  <span className="!border-none text-muted-foreground">{user.email}</span>
                 </div>
               </div>
+
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link href="/profile" className="cursor-pointer flex w-full items-center">
-                  <User className="mr-2 h-4 w-4" />
+
+              <DropdownMenuItem asChild className="text-sm hover:bg-gray-100 px-2 py-2 rounded-md cursor-pointer">
+                <Link href="/profile" className="flex items-center gap-2">
+                  <User className="h-4 w-4 text-primary" />
                   <span>Profile</span>
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/jobs/create" className="cursor-pointer flex w-full items-center">
-                  <Plus className="mr-2 h-4 w-4" />
+
+              <DropdownMenuItem asChild className="text-sm hover:bg-gray-100 px-2 py-2 rounded-md cursor-pointer">
+                <Link href="/jobs/create" className="flex items-center gap-2">
+                  <Plus className="h-4 w-4 text-green-600" />
                   <span>Post a Job</span>
                 </Link>
               </DropdownMenuItem>
+
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
-                <LogOut className="mr-2 h-4 w-4" />
+
+              <DropdownMenuItem
+                className="text-sm text-red-600 hover:bg-red-50 px-2 py-2 rounded-md cursor-pointer"
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 text-red-500" />
                 <span>Log out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
           <div className="flex items-center gap-2">
-            <Button variant="ghost" onClick={() => router.push("/auth/login")}>
+            <Button
+              variant="outline"
+              onClick={() => router.push("/auth/login")}
+              className="hover:bg-primary/10 transition"
+            >
               Login
             </Button>
-            <Button onClick={() => router.push("/auth/register")}>Register</Button>
+            <Button onClick={() => router.push("/auth/register")} className="bg-primary text-white hover:bg-primary/90">
+              Register
+            </Button>
           </div>
         )}
+
       </div>
     </header>
   )

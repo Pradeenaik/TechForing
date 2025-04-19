@@ -94,52 +94,86 @@ export default function JobList({ jobs, loading }: JobListProps) {
     <>
       <div className="space-y-4">
         {jobs.map((job) => (
-          <Card key={job.id} className="overflow-hidden hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-bold">{job.title}</h3>
-                  <div className="flex items-center gap-2 mt-2 text-gray-600">
-                    <Building size={16} />
-                    <span>{job.company}</span>
-                    <MapPin size={16} className="ml-2" />
-                    <span>{job.location}</span>
+          <Card
+            key={job.id}
+            className="overflow-hidden border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-shadow bg-white"
+          >
+            <CardContent className="!border-none p-6">
+              <div className="!border-none flex justify-between items-start">
+                <div className="!border-none">
+                  <h3 className=" text-2xl font-semibold text-blue-800">{job.title}</h3>
+                  <div className="!border-none flex flex-wrap items-center gap-2 mt-2 text-gray-500 text-sm">
+                    <div className="!border-none flex items-center gap-1">
+                      <Building size={16} className="!border-none text-blue-500" />
+                      <span className="!border-none">{job.company}</span>
+                    </div>
+                    <div className="!border-none flex items-center gap-1">
+                      <MapPin size={16} className="!border-none text-blue-500" />
+                      <span className="!border-none">{job.location}</span>
+                    </div>
                   </div>
                 </div>
-                <Badge variant={job.jobType === "Full-time" ? "default" : "outline"}>{job.jobType}</Badge>
+                <Badge
+                  className={`text-xs px-3 py-1 rounded-full ${job.jobType === "Full-time"
+                      ? "bg-blue-100 text-blue-800"
+                      : "bg-gray-100 text-gray-600 border border-gray-300"
+                    }`}
+                >
+                  {job.jobType}
+                </Badge>
               </div>
 
-              <p className="mt-4 text-gray-600 line-clamp-3">{job.description}</p>
+              <p className="!border-none mt-4 text-gray-600 text-sm line-clamp-3">{job.description}</p>
 
-              <div className="flex items-center gap-4 mt-4 text-sm text-gray-500">
-                <div className="flex items-center gap-1">
-                  <Clock size={14} />
-                  <span>{job.jobType}</span>
+              <div className="!border-none flex items-center gap-6 mt-4 text-xs text-gray-400">
+                <div className="!border-none flex items-center gap-1">
+                  <Clock size={14} className="!border-none text-blue-500" />
+                  <span className="!border-none">{job.jobType}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Calendar size={14} />
-                  <span>Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</span>
+                <div className="!border-none flex items-center gap-1">
+                  <Calendar size={14} className="!border-none text-blue-500" />
+                  <span className="!border-none">
+                    Posted{" "}
+                    {formatDistanceToNow(new Date(job.createdAt), {
+                      addSuffix: true,
+                    })}
+                  </span>
                 </div>
               </div>
             </CardContent>
 
-            <CardFooter className="bg-gray-50 p-4 flex justify-between">
-              <Button variant="outline" onClick={() => router.push(`/jobs/${job.id}`)}>
+            <CardFooter className="bg-gray-50 p-4 flex justify-between items-center">
+              <Button
+                variant="outline"
+                className="border-blue-500 text-blue-600 hover:bg-blue-50"
+                onClick={() => router.push(`/jobs/${job.id}`)}
+              >
                 View Details
               </Button>
 
               {user && user.id === job.userId && (
                 <div className="flex gap-2">
-                  <Button variant="outline" size="icon" onClick={() => router.push(`/jobs/edit/${job.id}`)}>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="text-blue-500 hover:bg-blue-50"
+                    onClick={() => router.push(`/jobs/edit/${job.id}`)}
+                  >
                     <Edit size={16} />
                   </Button>
-                  <Button variant="outline" size="icon" onClick={() => setDeleteJobId(job.id)}>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="text-red-500 hover:bg-red-50"
+                    onClick={() => setDeleteJobId(job.id)}
+                  >
                     <Trash2 size={16} />
                   </Button>
                 </div>
               )}
             </CardFooter>
           </Card>
+
         ))}
       </div>
 

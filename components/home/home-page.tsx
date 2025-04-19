@@ -65,20 +65,27 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 text-slate-800">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Job Listings</h1>
-          <Button onClick={() => router.push("/jobs/create")} className="flex items-center gap-2">
-            <PlusCircle size={16} />
+      <main className="!borer-none container mx-auto px-4 py-10">
+        <div className="!border-none flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
+          <h1 className="!border-none text-3xl font-bold tracking-tight text-slate-900">
+            Job Listings
+          </h1>
+          <Button
+            onClick={() => router.push("/jobs/create")}
+            className="!borer-none flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2 rounded-lg transition-all duration-200 shadow-sm"
+          >
+            <PlusCircle size={18} />
             Post a Job
           </Button>
         </div>
 
-        <JobFilters onFilter={handleFilter} />
+        <div className="!borer-none bg-white rounded-xl border border-slate-200 p-6 shadow-md">
+          <JobFilters onFilter={handleFilter} />
+        </div>
 
-        <div className="mt-8">
+        <div className="!border-none mt-10">
           <JobList jobs={filteredJobs} loading={loading} />
         </div>
       </main>

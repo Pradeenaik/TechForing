@@ -65,13 +65,13 @@ export default function CreateJobPage() {
       <Header />
       <main className="container mx-auto px-4 py-8">
         <Card className="max-w-3xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-2xl">Post a New Job</CardTitle>
+          <CardHeader className="!border-none">
+            <CardTitle className="!border-none text-2xl">Post a New Job</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="title">Job Title</Label>
+            <form onSubmit={handleSubmit} className="!border-none mt-2 space-y-6">
+              <div className="!border-none space-y-2">
+                <Label className="!border-none" htmlFor="title">Job Title</Label>
                 <Input
                   id="title"
                   name="title"
@@ -82,9 +82,9 @@ export default function CreateJobPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company</Label>
+              <div className="!border-none grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="!border-none space-y-2">
+                  <Label className="!border-none" htmlFor="company">Company</Label>
                   <Input
                     id="company"
                     name="company"
@@ -95,8 +95,8 @@ export default function CreateJobPage() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="location">Location</Label>
+                <div className="!border-none space-y-2">
+                  <Label className="!border-none" htmlFor="location">Location</Label>
                   <Input
                     id="location"
                     name="location"
@@ -108,9 +108,9 @@ export default function CreateJobPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="jobType">Job Type</Label>
+              <div className="!border-none grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="!border-none space-y-2">
+                  <Label className="!border-none" htmlFor="jobType">Job Type</Label>
                   <Select value={formData.jobType} onValueChange={(value) => handleSelectChange("jobType", value)}>
                     <SelectTrigger id="jobType">
                       <SelectValue placeholder="Select job type" />
@@ -125,8 +125,8 @@ export default function CreateJobPage() {
                   </Select>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="salary">Salary (optional)</Label>
+                <div className="!border-none space-y-2">
+                  <Label className="!border-none" htmlFor="salary">Salary (optional)</Label>
                   <Input
                     id="salary"
                     name="salary"
@@ -137,8 +137,8 @@ export default function CreateJobPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="description">Job Description</Label>
+              <div className="!border-none space-y-2">
+                <Label className="!border-none" htmlFor="description">Job Description</Label>
                 <Textarea
                   id="description"
                   name="description"
@@ -150,8 +150,8 @@ export default function CreateJobPage() {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="requirements">Requirements</Label>
+              <div className="!border-none space-y-2">
+                <Label className="!border-none" htmlFor="requirements">Requirements</Label>
                 <Textarea
                   id="requirements"
                   name="requirements"
@@ -163,8 +163,8 @@ export default function CreateJobPage() {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="applicationUrl">Application URL (optional)</Label>
+              <div className="!border-none space-y-2">
+                <Label className="!border-none" htmlFor="applicationUrl">Application URL (optional)</Label>
                 <Input
                   id="applicationUrl"
                   name="applicationUrl"
@@ -174,7 +174,7 @@ export default function CreateJobPage() {
                 />
               </div>
 
-              <div className="flex justify-end gap-4">
+              <div className="!border-none flex justify-end gap-4">
                 <Button type="button" variant="outline" onClick={() => router.back()}>
                   Cancel
                 </Button>

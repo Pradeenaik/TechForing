@@ -7,7 +7,14 @@ import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { loginUser } from "@/lib/auth-service"
 import { useAuth } from "@/lib/auth-context"
@@ -35,12 +42,13 @@ export default function LoginPage() {
         })
         router.push("/")
       } else {
-          throw new Error(/*data.message || */"Login failed")
+        throw new Error("Login failed")
       }
     } catch (error: any) {
       toast({
         title: "Login failed",
-        description: error.message || "Please check your credentials and try again",
+        description:
+          error.message || "Please check your credentials and try again",
         variant: "destructive",
       })
     } finally {
@@ -49,16 +57,20 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center">Login</CardTitle>
-          <CardDescription className="text-center">Enter your credentials to access your account</CardDescription>
+    <div className=" flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 px-4">
+      <Card className="!border-none w-full max-w-md shadow-lg rounded-2xl bg-white">
+        <CardHeader className="!border-none">
+          <CardTitle className="!border-none text-2xl text-center font-semibold">
+            Login
+          </CardTitle>
+          <CardDescription className=" !border-none text-center text-sm text-gray-500">
+            Enter your credentials to access your account
+          </CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+        <form className="pb-3 !border-none" onSubmit={handleSubmit}>
+          <CardContent className="!border-none space-y-5">
+            <div className="!border-none space-y-1.5">
+              <Label className="!border-none" htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -66,12 +78,16 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                className="!border-none bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary text-sm rounded-lg px-4 py-2 border-0"
               />
             </div>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
-                <Link href="/auth/forgot-password" className="text-sm text-primary hover:underline">
+            <div className="!border-none space-y-1.5">
+              <div className="!border-none flex items-center justify-between">
+                <Label className="!border-none" htmlFor="password">Password</Label>
+                <Link
+                  href="/auth/forgot-password"
+                  className="!border-none text-sm text-blue-600 hover:underline"
+                >
                   Forgot password?
                 </Link>
               </div>
@@ -81,16 +97,24 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                className="pb-5 bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary text-sm rounded-lg px-4 py-2 border-0"
               />
             </div>
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full" disabled={loading}>
+          <CardFooter className="!border-none mt-1 pt-3 flex flex-col space-y-4">
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={loading}
+            >
               {loading ? "Logging in..." : "Login"}
             </Button>
-            <p className="text-sm text-center text-muted-foreground">
+            <p className=" !border-none text-sm text-center text-gray-500">
               Don&apos;t have an account?{" "}
-              <Link href="/auth/register" className="text-primary hover:underline">
+              <Link
+                href="/auth/register"
+                className="!border-none text-blue-600 hover:underline"
+              >
                 Register
               </Link>
             </p>

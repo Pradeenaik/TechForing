@@ -178,10 +178,20 @@ export const updateJob = async (id: string, jobData: Partial<Job>): Promise<Job>
   }
 }
 
+// Add this helper to simulate network delay
+const simulateNetworkDelay = () => new Promise(resolve => setTimeout(resolve, 300));
+
 export const deleteJob = async (id: string): Promise<void> => {
   try {
-    // For demo purposes, remove from mock data
-    // In a real app, you would make an API call like this:
+    // For mock data implementation
+    const initialLength = MOCK_JOBS.length;
+    MOCK_JOBS = MOCK_JOBS.filter(job => job.id !== id);
+    
+    if (MOCK_JOBS.length === initialLength) {
+      throw new Error("Job not found");
+    }
+
+    // For real API implementation (uncomment when needed):
     /*
     const response = await fetch(`${API_URL}/jobs/${id}`, {
       method: "DELETE",
@@ -192,15 +202,8 @@ export const deleteJob = async (id: string): Promise<void> => {
       throw new Error(data.message || "Failed to delete job");
     }
     */
-
-    const index = MOCK_JOBS.findIndex((job) => job.id === id)
-    if (index === -1) {
-      throw new Error("Job not found")
-    }
-
-    MOCK_JOBS = MOCK_JOBS.filter((job) => job.id !== id)
   } catch (error) {
-    console.error("Delete job error:", error)
-    throw error
+    console.error("Delete job error:", error);
+    throw error;
   }
-}
+};

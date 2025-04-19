@@ -12,7 +12,10 @@ export function Logo() {
         height={40}
         priority
       />
-      <span className="font-bold text-lg !border-none bg-header text-white">TechForing</span> {/* Optional text */}
+    <div className="!border-none bg-header flex flex-col leading-tight">
+    <span className="!border-none bg-header font-bold text-lg text-white">TechForing</span>
+    <span className="!border-none bg-header font-bold text-xs text-white">Shaping Tomorrows Cybersecurity</span> 
+  </div>
     </Link>
   )
 }

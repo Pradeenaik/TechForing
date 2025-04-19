@@ -82,15 +82,15 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
     return (
       <div className="min-h-screen bg-gray-50">
         <Header />
-        <main className="container mx-auto px-4 py-8">
-          <Button variant="ghost" className="mb-6" onClick={() => router.back()}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
+        <main className="!border-none container mx-auto px-6 py-12">
+          <Button variant="ghost" className="!border-none mb-6" onClick={() => router.back()}>
+            <ArrowLeft className="!border-none mr-2 h-4 w-4" />
             Back to Jobs
           </Button>
 
-          <Card>
-            <CardContent className="p-6">
-              <div className="space-y-6">
+          <Card className="!border-none shadow-lg">
+            <CardContent className="!border-none p-8">
+              <div className="!border-none space-y-6">
                 <Skeleton className="h-8 w-2/3" />
                 <div className="flex gap-4">
                   <Skeleton className="h-5 w-40" />
@@ -111,7 +111,7 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
     return (
       <div className="min-h-screen bg-gray-50">
         <Header />
-        <main className="container mx-auto px-4 py-8 text-center">
+        <main className="container mx-auto px-6 py-12 text-center">
           <h2 className="text-2xl font-bold">Job not found</h2>
           <p className="mt-2 text-gray-600">The job you're looking for doesn't exist or has been removed.</p>
           <Button className="mt-4" onClick={() => router.push("/")}>
@@ -125,36 +125,36 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <Button variant="ghost" className="mb-6" onClick={() => router.back()}>
-          <ArrowLeft className="mr-2 h-4 w-4" />
+      <main className="container mx-auto px-6 py-12">
+        <Button variant="ghost" className="!border-none mb-6" onClick={() => router.back()}>
+          <ArrowLeft className="!border-none mr-2 h-4 w-4" />
           Back to Jobs
         </Button>
 
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start">
-              <div>
-                <h1 className="text-2xl font-bold">{job.title}</h1>
-                <div className="flex items-center gap-2 mt-2 text-gray-600">
-                  <Building size={18} />
-                  <span className="font-medium">{job.company}</span>
-                  <MapPin size={18} className="ml-2" />
-                  <span>{job.location}</span>
+        <Card className="!border-none shadow-lg">
+          <CardContent className="p-8">
+            <div className="!border-none flex justify-between items-start">
+              <div className="!border-none">
+                <h1 className="!border-none text-3xl font-semibold text-gray-800">{job.title}</h1>
+                <div className="!border-none flex items-center gap-3 mt-2 text-gray-600">
+                  <Building className="!border-none" size={18} />
+                  <span className="!border-none font-medium">{job.company}</span>
+                  <MapPin size={18} className="!border-none ml-2" />
+                  <span className="!border-none">{job.location}</span>
                 </div>
               </div>
 
-              <div className="flex gap-2">
-                <Badge variant={job.jobType === "Full-time" ? "default" : "outline"} className="text-sm">
+              <div className="!border-none flex gap-3">
+                <Badge variant={job.jobType === "Full-time" ? "default" : "outline"} className="!border-none text-sm">
                   {job.jobType}
                 </Badge>
 
                 {user && user.id === job.userId && (
-                  <div className="flex gap-2 ml-4">
-                    <Button variant="outline" size="icon" onClick={() => router.push(`/jobs/edit/${job.id}`)}>
+                  <div className="!border-none flex gap-3 ml-4">
+                    <Button className="!border-none" variant="outline" size="icon" onClick={() => router.push(`/jobs/edit/${job.id}`)}>
                       <Edit size={16} />
                     </Button>
-                    <Button variant="outline" size="icon" onClick={() => setDeleteDialogOpen(true)}>
+                    <Button className="!border-none" variant="outline" size="icon" onClick={() => setDeleteDialogOpen(true)}>
                       <Trash2 size={16} />
                     </Button>
                   </div>
@@ -162,35 +162,35 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 border-b pb-4">
-              <div className="flex items-center gap-1">
-                <Clock size={14} />
-                <span>{job.jobType}</span>
+            <div className=" !border-none flex items-center gap-4 mt-6 text-sm text-gray-500 border-b pb-4">
+              <div className=" !border-none flex items-center gap-2">
+                <Clock className="!border-none" size={14} />
+                <span className="!border-none">{job.jobType}</span>
               </div>
               {job.salary && (
-                <div className="flex items-center gap-1">
-                  <span>Salary: {job.salary}</span>
+                <div className="!border-none flex items-center gap-2">
+                  <span className="!border-none">Salary: {job.salary}</span>
                 </div>
               )}
-              <div className="flex items-center gap-1">
+              <div className="!border-none flex items-center gap-2">
                 <Calendar size={14} />
-                <span>Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</span>
+                <span className="!border-none">Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</span>
               </div>
             </div>
 
-            <div className="mt-6">
-              <h2 className="text-xl font-semibold mb-3">Job Description</h2>
-              <div className="whitespace-pre-line text-gray-700">{job.description}</div>
+            <div className=" mt-6">
+              <h2 className=" text-2xl font-semibold text-gray-800 mb-3">Job Description</h2>
+              <div className="!border-none whitespace-pre-line text-gray-700">{job.description}</div>
             </div>
 
             <div className="mt-6">
-              <h2 className="text-xl font-semibold mb-3">Requirements</h2>
-              <div className="whitespace-pre-line text-gray-700">{job.requirements}</div>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Requirements</h2>
+              <div className="!border-none whitespace-pre-line text-gray-700">{job.requirements}</div>
             </div>
 
             {job.applicationUrl && (
-              <div className="mt-8">
-                <Button className="flex items-center gap-2" onClick={() => window.open(job.applicationUrl, "_blank")}>
+              <div className="!border-none mt-8">
+                <Button className="!border-none flex items-center gap-2" onClick={() => window.open(job.applicationUrl, "_blank")}>
                   Apply Now
                   <ExternalLink size={16} />
                 </Button>
@@ -210,7 +210,7 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete} disabled={isDeleting} className="bg-red-500 hover:bg-red-600">
+            <AlertDialogAction onClick={handleDelete} disabled={isDeleting} className="bg-red-500 hover:bg-red-600 text-white">
               {isDeleting ? "Deleting..." : "Delete"}
             </AlertDialogAction>
           </AlertDialogFooter>

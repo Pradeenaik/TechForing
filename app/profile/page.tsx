@@ -47,14 +47,14 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
+        <h2 className="!border-none text-3xl font-semibold text-gray-800 mb-6 text-center">
           Welcome Back
         </h2>
 
         {/* Login or Register Form */}
-        <form className="space-y-6">
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <form className="!border-none space-y-6">
+          <div className="!border-none space-y-2">
+            <label htmlFor="email" className="!border-none block text-sm font-medium text-gray-700">
               Email
             </label>
             <input
@@ -67,8 +67,8 @@ export default function ProfilePage() {
             />
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <div className="!border-none space-y-2">
+            <label htmlFor="password" className="!border-none block text-sm font-medium text-gray-700">
               Password
             </label>
             <input
@@ -82,7 +82,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Submit Button */}
-          <div>
+          <div className="!border-none">
             <button
               type="submit"
               className="w-full py-3 text-lg text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -92,10 +92,10 @@ export default function ProfilePage() {
           </div>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+        <div className="!border-none mt-6 text-center">
+          <p className="!border-none text-sm text-gray-600">
             Don’t have an account?{" "}
-            <a href="/register" className="text-blue-600 hover:underline">
+            <a href="/register" className="!border-none text-blue-600 hover:underline">
               Create one
             </a>
           </p>
